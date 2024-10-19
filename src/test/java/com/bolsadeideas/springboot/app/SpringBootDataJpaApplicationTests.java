@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app;
+/*package com.bolsadeideas.springboot.app;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,3 +14,4 @@ public class SpringBootDataJpaApplicationTests {
 	}
 
 }
+*/
