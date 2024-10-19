@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<h4 class="card-title">
+					<a class="btn btn-light"
+						th:href="@{'/ver/' + ${factura.cliente.id}}"
+						th:text="'&laquo; volver'"></a>
+				</h4>
+
+				<form th:action="@{/factura/form/}" th:object="${factura}"
+					method="post">
+
+					<div class="form-group row">
+						<label for="cliente" class="col-sm-2 col-form-label"
+							th:text="'Cliente'"></label>
+						<div class="col-sm-6">
+							<input name="cliente"
+								th:value="${factura.cliente.nombre} + ' ' + ${factura.cliente.apellido}"
+								class="form-control" disabled='disabled' />
+						</div>
+					</div>
+				
+					<div class="form-group row">
+						<label for="tipodocumento" class="col-sm-2 col-form-label"
+							th:text="'Tipodocumento'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{tipodocumento}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('tipodocumento')}" th:errors="*{tipodocumento}"></div>
+						</div>
+					</div>
+
+                    <div class="form-group row">
+						<label for="camposerie" class="col-sm-2 col-form-label"
+							th:text="'Camposerie'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{camposerie}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('camposerie')}" th:errors="*{camposerie}"></div>
+						</div>
+					</div>
+					
+					 <div class="form-group row">
+						<label for="tipomoneda" class="col-sm-2 col-form-label"
+							th:text="'Tipomoneda'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{tipomoneda}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('tipomoneda')}" th:errors="*{tipomoneda}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="tipooperacion" class="col-sm-2 col-form-label"
+							th:text="'Tipooperacion'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{tipooperacion}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('tipooperacion')}" th:errors="*{tipooperacion}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="tipoid" class="col-sm-2 col-form-label"
+							th:text="'Tipoid'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{tipoid}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('tipoid')}" th:errors="*{tipoid}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="numeroid" class="col-sm-2 col-form-label"
+							th:text="'Numeroid'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{numeroid}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('numeroid')}" th:errors="*{numeroid}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="interescuota" class="col-sm-2 col-form-label"
+							th:text="'Interescuota'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{interescuota}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('interescuota')}" th:errors="*{interescuota}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="interesmora" class="col-sm-2 col-form-label"
+							th:text="'Interesmora'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{interesmora}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('interesmora')}" th:errors="*{interesmora}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="montoseguro" class="col-sm-2 col-form-label"
+							th:text="'Montoseguro'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{montoseguro}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('montoseguro')}" th:errors="*{montoseguro}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="totalfacturado" class="col-sm-2 col-form-label"
+							th:text="'Totalfacturado'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{totalfacturado}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('totalfacturado')}" th:errors="*{totalfacturado}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="totalinafecto" class="col-sm-2 col-form-label"
+							th:text="'Totalinafecto'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{totalinafecto}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('totalinafecto')}" th:errors="*{totalinafecto}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="totalexonerado" class="col-sm-2 col-form-label"
+							th:text="'Totalexonerado'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{totalexonerado}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('totalexonerado')}" th:errors="*{totalexonerado}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="importetotal" class="col-sm-2 col-form-label"
+							th:text="'Importetotal'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{importetotal}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('importetotal')}" th:errors="*{importetotal}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="documentomodifica" class="col-sm-2 col-form-label"
+							th:text="'Documentomodifica'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{documentomodifica}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('documentomodifica')}" th:errors="*{documentomodifica}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="seriemodifica" class="col-sm-2 col-form-label"
+							th:text="'Seriemodifica'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{seriemodifica}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('seriemodifica')}" th:errors="*{seriemodifica}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="correlativomodifica" class="col-sm-2 col-form-label"
+							th:text="'Correlativomodifica'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{correlativomodifica}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('correlativomodifica')}" th:errors="*{correlativomodifica}"></div>
+						</div>
+					</div>
+					
+					
+					<div class="form-group row">
+						<label for="montocredito" class="col-sm-2 col-form-label"
+							th:text="'Montocredito'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{montocredito}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('montocredito')}" th:errors="*{montocredito}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="numerocontrato" class="col-sm-2 col-form-label"
+							th:text="'Numerocontrato'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{numerocontrato}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('numerocontrato')}" th:errors="*{numerocontrato}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="numeropoliza" class="col-sm-2 col-form-label"
+							th:text="'Numeropoliza'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{numeropoliza}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('numeropoliza')}" th:errors="*{numeropoliza}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="iniciocobertura" class="col-sm-2 col-form-label"
+							th:text="'Iniciocobertura'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{iniciocobertura}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('iniciocobertura')}" th:errors="*{iniciocobertura}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="terminocobertura" class="col-sm-2 col-form-label"
+							th:text="'Terminocobertura'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{terminocobertura}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('terminocobertura')}" th:errors="*{terminocobertura}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="tiposeguro" class="col-sm-2 col-form-label"
+							th:text="'Tiposeguro'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{tiposeguro}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('tiposeguro')}" th:errors="*{tiposeguro}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="sumaasegurada" class="col-sm-2 col-form-label"
+							th:text="'Sumaasegurada'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{sumaasegurada}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('sumaasegurada')}" th:errors="*{sumaasegurada}"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="descripcion" class="col-sm-2 col-form-label"
+							th:text="'Descripción'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{descripcion}" class="form-control" th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="observacion" class="col-sm-2 col-form-label"
+							th:text="'Observación'"></label>
+						<div class="col-sm-6">
+							<textarea th:field="*{observacion}" class="form-control"></textarea>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="buscar_producto" class="col-sm-2 col-form-label"
+							th:text="'Buscar producto'"></label>
+						<div class="col-sm-6">
+							<input type="text" name="buscar_producto" id="buscar_producto"
+								class="form-control" />
+						</div>
+					</div>
+
+					<table th:replace="factura/plantilla-items :: itemsFactura"></table>
+
+					<table id="cargarItemProductos"
+						class="table table-sm table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Precio</th>
+								<th>Cantidad</th>
+								<th>Total</th>
+								<th>Eliminar</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+					<h5>Total <span class="badge badge-secondary" id="gran_total">0</span></h5>
+
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input type="submit" th:value="${titulo}"
+								class="btn btn-secondary" />
+						</div>
+					</div>
+				</form>
+
+
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+	<script th:replace="factura/js/autocomplete-productos :: javascript"></script>
+
+</body>
+</html>
